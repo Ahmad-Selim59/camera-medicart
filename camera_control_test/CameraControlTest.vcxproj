@@ -53,25 +53,24 @@
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <!-- Use toolset default (C++14 or later); 'stdcpp11' is not a valid value -->
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>CameraCtrl.lib;strmiids.lib;Ws2_32.lib;ole32.lib;oleaut32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Cameralib\release\CameraCtrl.lib;strmiids.lib;Ws2_32.lib;ole32.lib;oleaut32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(ProjectDir)CameraCtrl.dll" "$(OutDir)CameraCtrl.dll"</Command>
+      <Command>copy /Y "$(ProjectDir)..\Cameralib\release\CameraCtrl.dll" "$(OutDir)CameraCtrl.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -79,7 +78,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <!-- Use toolset default (C++14 or later); 'stdcpp11' is not a valid value -->
       <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
@@ -87,10 +85,10 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>CameraCtrl.lib;strmiids.lib;Ws2_32.lib;ole32.lib;oleaut32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Cameralib\release\CameraCtrl.lib;strmiids.lib;Ws2_32.lib;ole32.lib;oleaut32.lib;Advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>copy /Y "$(ProjectDir)CameraCtrl.dll" "$(OutDir)CameraCtrl.dll"</Command>
+      <Command>copy /Y "$(ProjectDir)..\Cameralib\release\CameraCtrl.dll" "$(OutDir)CameraCtrl.dll"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -98,10 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraCtrl.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CameraCtrl.dll" />
-    <None Include="CameraCtrl.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
