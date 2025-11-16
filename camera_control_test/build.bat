@@ -4,7 +4,7 @@ echo Camera Control Test - Visual Studio Build
 echo ========================================
 echo.
 
-REM 
+REM Check if Visual Studio compiler is available
 where cl >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo ERROR: Visual Studio compiler (cl.exe) not found!
@@ -21,7 +21,6 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-REM 
 if not exist CameraCtrl.dll (
     echo ERROR: CameraCtrl.dll not found!
     echo Make sure CameraCtrl.dll is in this folder.
@@ -39,8 +38,8 @@ if not exist CameraCtrl.lib (
 echo Compiling and linking...
 echo.
 
-REM 
-cl /EHsc /std:c++11 /O2 /W3 main.cpp CameraCtrl.lib strmiids.lib Ws2_32.lib ole32.lib oleaut32.lib Advapi32.lib /Fe:CameraControlTest.exe /link /SUBSYSTEM:CONSOLE
+REM Compile and link with Visual Studio (use default language standard)
+cl /EHsc /O2 /W3 main.cpp CameraCtrl.lib strmiids.lib Ws2_32.lib ole32.lib oleaut32.lib Advapi32.lib /Fe:CameraControlTest.exe /link /SUBSYSTEM:CONSOLE
 
 if %ERRORLEVEL% NEQ 0 (
     echo.
@@ -57,10 +56,8 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-REM 
 del main.obj 2>nul
 
-REM 
 if exist CameraCtrl.dll (
     copy /Y CameraCtrl.dll . >nul 2>&1
 )
