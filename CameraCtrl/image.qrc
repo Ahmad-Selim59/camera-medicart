@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/background/mainwin.png</file>
+        <file>image/background/settingwin.png</file>
+        <file>image/icon/arrow.png</file>
+        <file>image/icon/arrow_left.png</file>
+        <file>image/icon/arrow_up.png</file>
+        <file>image/icon/ball.png</file>
+        <file>image/icon/close.png</file>
+        <file>image/icon/light.png</file>
+        <file>image/icon/light_add.png</file>
+        <file>image/icon/light_reduce.png</file>
+        <file>image/icon/line.png</file>
+        <file>image/icon/position.png</file>
+        <file>image/icon/setting.png</file>
+        <file>image/icon/1.png</file>
+        <file>image/icon/2.png</file>
+        <file>image/icon/3.png</file>
+        <file>image/icon/4.png</file>
+        <file>image/icon/0.png</file>
+        <file>image/icon/00.png</file>
+        <file>image/icon/add.png</file>
+        <file>image/icon/redue.png</file>
+        <file>image/icon/arrow_right.png</file>
+        <file>image/icon/5.png</file>
+        <file>image/icon/6.png</file>
+        <file>image/icon/hide.png</file>
+        <file>image/icon/Hide_line.png</file>
+    </qresource>
+</RCC>

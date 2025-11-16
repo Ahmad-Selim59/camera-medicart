@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>491</width>
+    <height>417</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#Win_Right{
+	border-image: url(:/image/background/mainwin.png);
+}
+QWidget#Win_Left{
+	border-image: url(:/image/background/mainwin.png);
+}</string>
+   </property>
+   <widget class="WinLeft" name="Win_Left" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>268</width>
+      <height>417</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="WinRight" name="Win_Right" native="true">
+    <property name="geometry">
+     <rect>
+      <x>267</x>
+      <y>0</y>
+      <width>224</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	color: rgb(116, 114, 114);
+	background-color: rgb(39, 39, 39);
+	border:1px solid #424242;
+	border-radius:1px;
+	
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+}
+QPushButton:checked{
+color: rgb(226, 222, 222);
+background-color: rgb(65, 65, 65);
+}
+QPushButton::hover{
+	background-color: rgb(54, 54, 54);
+}
+
+QLine{
+	background-color: rgb(154, 154, 154);
+}
+
+/*-------------------------滑动条部分--------------------*/
+QSlider::groove:horizontal{
+	border: 1px;
+	height: 3px; 
+	position: absolute;
+	border-radius :1px;
+	margin: 1px 0;
+	left: 2px; right: 2px;
+	background-color: rgb(164, 164, 164);
+}
+/*滑动手柄部分*/
+QSlider::handle:horizontal:enabled{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #a4c4f8, stop:1 #68a3ed);
+    border: 1px;
+    width: 15px;
+    height: 10px;
+    margin: -4px -1;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal:!enabled{
+background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #cccccc, stop:1 #bfbfbf);
+    border: 1px;
+    width: 15px;
+    height: 10px;
+    margin: -4px -1;
+    border-radius: 5px;
+}
+</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_Hide_L">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>10</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/icon/Hide_line.png);
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Label_Hide_R">
+    <property name="geometry">
+     <rect>
+      <x>267</x>
+      <y>0</y>
+      <width>10</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/icon/Hide_line.png);
+
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Buffer_2">
+    <property name="geometry">
+     <rect>
+      <x>267</x>
+      <y>224</y>
+      <width>46</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Buffer_1">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>223</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>268</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/background/mainwin.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>268</x>
+      <y>0</y>
+      <width>224</width>
+      <height>417</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(:/image/background/mainwin.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <zorder>frame_2</zorder>
+   <zorder>frame</zorder>
+   <zorder>Buffer_1</zorder>
+   <zorder>Buffer_2</zorder>
+   <zorder>Win_Left</zorder>
+   <zorder>Win_Right</zorder>
+   <zorder>Label_Hide_R</zorder>
+   <zorder>Label_Hide_L</zorder>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WinRight</class>
+   <extends>QWidget</extends>
+   <header>winright.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WinLeft</class>
+   <extends>QWidget</extends>
+   <header>winleft.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

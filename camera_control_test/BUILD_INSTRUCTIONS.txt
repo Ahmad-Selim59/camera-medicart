@@ -1,0 +1,144 @@
+================================================================================
+CAMERA CONTROL TEST APPLICATION - BUILD INSTRUCTIONS
+================================================================================
+
+This test application verifies that the CameraCtrl SDK can control your camera
+via USB on a Windows computer.
+
+FILES INCLUDED:
+- main.cpp              : Source code for the test application
+- CameraCtrl.h          : SDK header file
+- CameraCtrl.dll        : SDK dynamic library (required at runtime)
+- CameraCtrl.lib        : SDK import library (required for linking)
+- CameraControlTest.sln : Visual Studio solution file
+- CameraControlTest.vcxproj : Visual Studio project file
+- build.bat             : Batch file for command-line building
+- CMakeLists.txt        : CMake build configuration
+- Makefile              : Makefile for MinGW
+
+================================================================================
+BUILDING THE APPLICATION
+================================================================================
+
+METHOD 1: Visual Studio (EASIEST)
+----------------------------------
+1. Double-click "CameraControlTest.sln" to open in Visual Studio
+2. Select "Release" or "Debug" configuration (x64 platform)
+3. Press F7 or go to Build > Build Solution
+4. Executable will be in: x64\Release\CameraControlTest.exe
+   (or x64\Debug\CameraControlTest.exe)
+
+METHOD 2: Command Line (Visual Studio)
+---------------------------------------
+1. Open "Developer Command Prompt for VS" from Start menu
+2. Navigate to this directory
+3. Run: build.bat
+4. Executable will be: CameraControlTest.exe
+
+METHOD 3: CMake
+---------------
+1. Open CMake GUI
+2. Set source directory to this folder
+3. Set build directory (e.g., build/)
+4. Configure and Generate
+5. Open generated solution and build
+
+================================================================================
+RUNNING THE APPLICATION
+================================================================================
+
+1. Ensure CameraCtrl.dll is in the same directory as CameraControlTest.exe
+   (Visual Studio automatically copies it to the output folder)
+
+2. Connect your camera via USB to the Windows computer
+
+3. Run CameraControlTest.exe
+
+4. Follow the menu:
+   a) Select option 1 to list available cameras
+   b) Select option 2 to connect to a camera (enter the index number)
+   c) Test various controls (options 3-10)
+
+================================================================================
+TESTING CHECKLIST
+================================================================================
+
+Basic Verification:
+[ ] Camera appears in the device list
+[ ] Connection to camera succeeds
+[ ] Camera properties can be retrieved
+
+PTZ Controls:
+[ ] Pan left/right works
+[ ] Tilt up/down works
+[ ] Zoom in/out works
+[ ] Movement stops correctly
+
+Focus Controls:
+[ ] Auto focus works
+[ ] Manual focus works
+[ ] Focus near/far works
+
+Image Settings:
+[ ] Brightness can be adjusted
+[ ] Contrast can be adjusted
+[ ] Saturation can be adjusted
+[ ] Sharpness can be adjusted
+[ ] White balance can be adjusted
+
+Camera Features:
+[ ] Flip on/off works
+[ ] Mirror on/off works
+[ ] Home position works
+[ ] Freeze on/off works
+[ ] IR controls work (if supported)
+
+Advanced:
+[ ] Presets can be set/called/cleared
+[ ] Pan/Tilt position can be read
+[ ] Pan/Tilt position can be set
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "No cameras found"
+Solution: 
+- Check USB connection
+- Verify camera appears in Windows Device Manager
+- Camera must support UVC extension units
+- Check if camera PID matches: 8888, 7588, 9999, or 00f9
+
+Problem: "Failed to connect"
+Solution:
+- Try different USB port
+- Close other applications using the camera
+- Restart the application
+- Check camera driver installation
+
+Problem: "DLL not found" or similar runtime error
+Solution:
+- Ensure CameraCtrl.dll is in the same folder as the executable
+- Copy DLL manually if needed
+- Check Windows PATH environment variable
+
+Problem: Build errors
+Solution:
+- Use Visual Studio Developer Command Prompt
+- Verify all SDK files are present
+- Check Windows SDK is installed
+- Try cleaning and rebuilding
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+Once you've verified the camera controls work:
+1. Document which features work and which don't
+2. Note any limitations or issues
+3. Proceed to set up server/client architecture for remote control
+4. The SDK can be used on the server side to control the camera
+5. Create a network interface layer on top of the SDK
+
+================================================================================
+

@@ -1,0 +1,70 @@
+================================================================================
+MINGW LINKING FIX - UNDEFINED REFERENCES
+================================================================================
+
+PROBLEM:
+MinGW cannot directly use Visual Studio .lib files. The linker can't find
+the DLL functions because the .lib file format is different.
+
+ERROR YOU'RE SEEING:
+"undefined reference to `BaseDevice::EnumUSBDevices(...)`"
+"undefined reference to `BaseDevice::Initial()`"
+etc.
+
+================================================================================
+SOLUTION: Create MinGW Import Library
+================================================================================
+
+You need to create a MinGW-compatible import library (.a file) from the DLL.
+
+STEP 1: Download pexports tool
+-------------------------------
+Download from: http://sourceforge.net/projects/mingw/files/MinGW/Extension/pexports/
+
+Or direct link: 
+http://sourceforge.net/projects/mingw/files/MinGW/Extension/pexports/pexports-0.47/pexports-0.47-bin.zip/download
+
+Extract pexports.exe and either:
+- Add it to your PATH, OR
+- Place it in the camera_control_test folder
+
+STEP 2: Create Import Library
+------------------------------
+Double-click: create_mingw_lib.bat
+
+This will:
+1. Generate CameraCtrl.def from CameraCtrl.dll
+2. Create CameraCtrl.a (MinGW import library)
+
+STEP 3: Build
+-------------
+Double-click: build_mingw_with_a.bat
+
+This uses the .a file instead of the .lib file.
+
+================================================================================
+ALTERNATIVE: Manual Commands
+================================================================================
+
+If the batch file doesn't work, run these commands manually:
+
+1. Generate .def file:
+   pexports CameraCtrl.dll > CameraCtrl.def
+
+2. Create import library:
+   dlltool -d CameraCtrl.def -l CameraCtrl.a -D CameraCtrl.dll
+
+3. Build:
+   g++ -std=c++11 -Wall -O2 -DCAMCTRL_API= -DCAMCTRL_EXPORTS= main.cpp -o CameraControlTest.exe CameraCtrl.a -lstrmiids -lws2_32 -lole32 -loleaut32 -ladvapi32 -Wl,--enable-auto-import
+
+================================================================================
+QUICK SUMMARY
+================================================================================
+
+1. Download pexports.exe
+2. Run: create_mingw_lib.bat
+3. Run: build_mingw_with_a.bat
+4. Run: CameraControlTest.exe
+
+================================================================================
+

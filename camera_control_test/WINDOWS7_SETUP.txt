@@ -1,0 +1,176 @@
+================================================================================
+WINDOWS 7 SETUP INSTRUCTIONS - Minimal C++ Compiler
+================================================================================
+
+Since you're on Windows 7, here are the easiest ways to compile this test
+application with minimal tools:
+
+================================================================================
+OPTION 1: TDM-GCC (RECOMMENDED - EASIEST)
+================================================================================
+
+TDM-GCC is a simple, lightweight GCC compiler for Windows that works great
+on Windows 7.
+
+1. Download TDM-GCC:
+   - Go to: https://jmeubank.github.io/tdm-gcc/
+   - Download: "tdm64-gcc-10.3.0-2.exe" (or latest version)
+   - File size: ~100MB
+
+2. Install:
+   - Run the installer
+   - Choose "MinGW-w64/TDM64" (64-bit) or "MinGW32" (32-bit)
+   - Make sure "Add to PATH" is checked
+   - Complete installation
+
+3. Verify installation:
+   - Open Command Prompt
+   - Type: g++ --version
+   - You should see version information
+
+4. Build the application:
+   - Navigate to the camera_control_test folder
+   - Run: build_mingw.bat
+   - Or use: make (if you have make installed)
+
+================================================================================
+OPTION 2: MinGW-w64 (STANDALONE)
+================================================================================
+
+1. Download MinGW-w64:
+   - Go to: https://www.mingw-w64.org/downloads/
+   - Or use direct link: https://sourceforge.net/projects/mingw-w64/files/
+   - Download: "x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z" (or similar)
+   - Extract to: C:\mingw64
+
+2. Add to PATH:
+   - Right-click "Computer" > Properties > Advanced System Settings
+   - Click "Environment Variables"
+   - Under "System Variables", find "Path" and click "Edit"
+   - Add: C:\mingw64\bin
+   - Click OK on all dialogs
+
+3. Verify:
+   - Open NEW Command Prompt
+   - Type: g++ --version
+
+4. Build:
+   - Navigate to camera_control_test folder
+   - Run: build_mingw.bat
+
+================================================================================
+OPTION 3: Dev-C++ (COMES WITH COMPILER)
+================================================================================
+
+Dev-C++ is an old IDE that comes with MinGW bundled. Good for Windows 7.
+
+1. Download Dev-C++:
+   - Go to: https://sourceforge.net/projects/orwelldevcpp/
+   - Download: "Dev-Cpp 5.11 TDM-GCC 4.9.2 Setup.exe"
+   - File size: ~50MB
+
+2. Install:
+   - Run installer
+   - Complete installation
+   - Dev-C++ includes MinGW compiler
+
+3. Build:
+   - Open Dev-C++
+   - File > New > Project > Console Application (C++)
+   - Copy main.cpp content into the project
+   - Project > Project Options > Parameters > Linker
+   - Add these libraries:
+     * CameraCtrl.lib
+     * strmiids
+     * ws2_32
+     * ole32
+     * oleaut32
+     * advapi32
+   - Build > Compile (F9)
+   - Copy CameraCtrl.dll to output folder
+
+================================================================================
+QUICK BUILD (AFTER INSTALLING COMPILER)
+================================================================================
+
+Once you have g++ available:
+
+Method 1: Use the batch file (EASIEST)
+---------------------------------------
+1. Open Command Prompt
+2. Navigate to camera_control_test folder
+3. Run: build_mingw.bat
+4. Done! CameraControlTest.exe will be created
+
+Method 2: Use Makefile
+-----------------------
+1. Install "make" (comes with TDM-GCC or MinGW-w64)
+2. Open Command Prompt in camera_control_test folder
+3. Run: make
+4. Done!
+
+Method 3: Manual compilation
+-----------------------------
+1. Open Command Prompt
+2. Navigate to camera_control_test folder
+3. Run these commands:
+
+   g++ -std=c++11 -Wall -O2 -c main.cpp -o main.o
+   g++ main.o -o CameraControlTest.exe CameraCtrl.lib -lstrmiids -lws2_32 -lole32 -loleaut32 -ladvapi32
+   del main.o
+
+================================================================================
+VERIFICATION
+================================================================================
+
+After building, verify:
+1. CameraControlTest.exe exists
+2. CameraCtrl.dll is in the same folder
+3. Run: CameraControlTest.exe
+4. Should see the menu
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "g++ is not recognized"
+Solution:
+- Make sure compiler is installed
+- Add compiler bin folder to PATH
+- Restart Command Prompt after changing PATH
+
+Problem: "CameraCtrl.lib: No such file"
+Solution:
+- Make sure you're in the camera_control_test folder
+- Verify CameraCtrl.lib exists in the folder
+
+Problem: Linker errors about missing symbols
+Solution:
+- Make sure all library files are present:
+  * CameraCtrl.lib
+  * CameraCtrl.dll
+  * CameraCtrl.h
+- Try using full paths to libraries
+
+Problem: "Cannot find -lstrmiids" or similar
+Solution:
+- These are Windows system libraries
+- Should be available if Windows SDK is installed
+- If not, you may need to install Windows SDK for Windows 7
+
+================================================================================
+RECOMMENDED: TDM-GCC
+================================================================================
+
+For Windows 7, I recommend TDM-GCC because:
+- Simple installer (one file)
+- Works out of the box
+- Adds itself to PATH automatically
+- Includes make utility
+- Good compatibility with Windows 7
+- Small download size
+
+Download: https://jmeubank.github.io/tdm-gcc/
+
+================================================================================
+

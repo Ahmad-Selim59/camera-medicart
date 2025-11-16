@@ -1,0 +1,74 @@
+================================================================================
+MINGW LINKING FIX - READ THIS IF BUILD FAILS
+================================================================================
+
+PROBLEM:
+MinGW cannot directly use Visual Studio .lib files. The CameraCtrl.lib was
+created with Visual Studio and needs special handling for MinGW.
+
+SOLUTION:
+Use build_mingw_simple.bat - it links directly to the DLL file instead of
+the .lib file.
+
+================================================================================
+QUICK FIX
+================================================================================
+
+1. Double-click: build_mingw_simple.bat
+
+This script:
+- Compiles with MinGW-compatible settings
+- Links directly to CameraCtrl.dll (not the .lib file)
+- Handles the dllimport warnings automatically
+
+================================================================================
+WHAT CHANGED
+================================================================================
+
+1. Created CameraCtrl_mingw.h wrapper header
+   - Removes dllimport attribute for MinGW
+   - Automatically used when compiling with MinGW
+
+2. Updated main.cpp
+   - Detects MinGW compiler
+   - Uses compatible header automatically
+
+3. Created build_mingw_simple.bat
+   - Simple one-step compile and link
+   - Links directly to DLL file
+   - No need for .lib file conversion
+
+================================================================================
+IF IT STILL FAILS
+================================================================================
+
+Option 1: Generate MinGW import library (Advanced)
+---------------------------------------------------
+If you have pexports tool:
+1. pexports CameraCtrl.dll > CameraCtrl.def
+2. dlltool -d CameraCtrl.def -l CameraCtrl.a -D CameraCtrl.dll
+3. Then link with: g++ ... CameraCtrl.a ...
+
+Option 2: Use Visual Studio
+----------------------------
+If you have Visual Studio available, use build.bat instead.
+
+Option 3: Check DLL dependencies
+---------------------------------
+Make sure CameraCtrl.dll is in the same folder and all its dependencies
+are available (usually Windows system DLLs).
+
+================================================================================
+CURRENT STATUS
+================================================================================
+
+Try this now:
+1. Double-click: build_mingw_simple.bat
+2. It should compile and link successfully
+3. Run: CameraControlTest.exe
+
+The warnings about dllimport are normal and can be ignored - they don't
+affect functionality.
+
+================================================================================
+

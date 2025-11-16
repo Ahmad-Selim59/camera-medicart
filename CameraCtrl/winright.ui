@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WinRight</class>
+ <widget class="QWidget" name="WinRight">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>224</width>
+    <height>417</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#WinRight{
+	border-image: url(:/image/background/mainwin.png);
+}
+QPushButton:enabled{
+	color: rgb(116, 114, 114);
+	background-color: rgb(39, 39, 39);
+	border:1px solid #424242;
+	border-radius:1px;
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+}
+QPushButton:!enabled{
+	background-color: rgb(88, 88, 88);
+}
+
+QPushButton:checked{
+color: rgb(226, 222, 222);
+background-color: rgb(65, 65, 65);
+}
+QPushButton::hover{
+	background-color: rgb(54, 54, 54);
+}
+
+
+
+
+QLine{
+	background-color: rgb(154, 154, 154);
+}
+
+/*-------------------------滑动条部分--------------------*/
+QSlider::groove:horizontal{
+	border: 1px;
+	height: 3px; 
+	position: absolute;
+	border-radius :1px;
+	margin: 1px 0;
+	left: 2px; right: 2px;
+	background-color: rgb(164, 164, 164);
+}
+/*滑动手柄部分*/
+QSlider::handle:horizontal:enabled{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #a4c4f8, stop:1 #68a3ed);
+    border: 1px;
+    width: 15px;
+    height: 10px;
+    margin: -4px -1;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal:!enabled{
+background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #cccccc, stop:1 #bfbfbf);
+    border: 1px;
+    width: 15px;
+    height: 10px;
+    margin: -4px -1;
+    border-radius: 5px;
+}
+
+</string>
+  </property>
+  <widget class="QPushButton" name="BT_Close">
+   <property name="geometry">
+    <rect>
+     <x>185</x>
+     <y>2</y>
+     <width>37</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/image/icon/close.png);
+border:0px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_Top">
+   <property name="geometry">
+    <rect>
+     <x>147</x>
+     <y>2</y>
+     <width>37</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+border-image: url(:/image/icon/arrow_up.png);
+border:0px;
+}
+QPushButton:selected{
+	background-color: rgb(255, 255, 255);
+}
+
+/*
+	border:1px solid #424242;
+	border-radius:1px;
+	
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+**/</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>25</x>
+     <y>28</y>
+     <width>195</width>
+     <height>1</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	background-color: rgb(154, 154, 154);
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>85</y>
+     <width>101</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/image/icon/position.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QSlider" name="Slider_Zoom">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>265</y>
+     <width>80</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>14</number>
+   </property>
+   <property name="singleStep">
+    <number>0</number>
+   </property>
+   <property name="pageStep">
+    <number>0</number>
+   </property>
+   <property name="value">
+    <number>7</number>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>22</x>
+     <y>290</y>
+     <width>195</width>
+     <height>1</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	background-color: rgb(154, 154, 154);
+</string>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_0">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>330</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>330</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>1</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>330</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>2</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_5">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>360</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>5</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_4">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>360</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>4</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_7">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>390</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>7</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_8">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>390</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>8</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_6">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>390</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>6</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BT_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>360</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>3</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="toolButton">
+   <property name="geometry">
+    <rect>
+     <x>-5</x>
+     <y>0</y>
+     <width>30</width>
+     <height>417</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:0px;
+border-image: url(:/image/icon/line.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="image.qrc">
+     <normaloff>:/image/icon/arrow_left.png</normaloff>:/image/icon/arrow_left.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>265</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/image/icon/6.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>270</y>
+     <width>6</width>
+     <height>7</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/image/icon/redue.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>265</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/image/icon/6.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>185</x>
+     <y>270</y>
+     <width>7</width>
+     <height>8</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/image/icon/add.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="RockerHandle" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>85</y>
+     <width>100</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:40px;</string>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="BT_Set">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>300</y>
+     <width>75</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolButton:enabled{
+	color: rgb(226, 222, 222);
+	background-color: rgb(39, 39, 39);
+	border:1px solid #424242;
+	border-radius:1px;
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+}
+QToolButton:!enabled{
+	color: rgb(226, 222, 222);
+	background-color: rgb(88, 88, 88);
+	border:1px solid #424242;
+	border-radius:1px;
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+}
+
+QToolButton:checked{
+background-color: rgb(110, 110, 110);
+}
+QToolButton:!checked{
+background-color: rgb(65, 65, 65);
+}
+QToolButton:hover{
+	background-color: rgb(110, 110, 110);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Set</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QToolButton" name="BT_Clear">
+   <property name="geometry">
+    <rect>
+     <x>133</x>
+     <y>300</y>
+     <width>75</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolButton:enabled{
+	color: rgb(226, 222, 222);
+	background-color: rgb(39, 39, 39);
+	border:1px solid #424242;
+	border-radius:1px;
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+}
+QToolButton:!enabled{
+	color: rgb(226, 222, 222);
+	background-color: rgb(88, 88, 88);
+	border:1px solid #424242;
+	border-radius:1px;
+	border-bottom:1px solid rgb(27, 27, 27);
+	border-right:2px solid #1c1c1c;
+}
+
+QToolButton:checked{
+background-color: rgb(110, 110, 110);
+}
+QToolButton:!checked{
+background-color: rgb(65, 65, 65);
+}
+QToolButton:hover{
+	background-color: rgb(110, 110, 110);
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Clear</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="Box_Camera_USB">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>40</y>
+     <width>140</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+     <pointsize>8</pointsize>
+     <weight>50</weight>
+     <italic>false</italic>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QComboBox{
+	border:0px;
+	border-radius:4px;
+	color: rgb(112, 112, 112);	padding:0 6px;
+
+}
+
+QComboBox::drop-down {
+      subcontrol-origin: padding;
+      subcontrol-position: top right;
+      width: 20px;
+      border-left-width: 0px;
+      border-left-color: darkgray;
+      border-left-style: solid; /* just a single line */
+      border-top-right-radius: 4px; /* same radius as the QComboBox */
+      border-bottom-right-radius: 4px;
+  }
+QComboBox::down-arrow {
+    
+	border-image: url(:/image/icon/arrow.png);
+}</string>
+   </property>
+   <property name="currentText">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>42</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Arial</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>Device</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="set_pan_data">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>214</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="set_tilt_data">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>240</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="get_pan_data">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>214</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="get_tilt_data">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>240</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>214</y>
+     <width>31</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>PAN</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>240</y>
+     <width>31</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>TILT</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="set_pan_tilt">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>180</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>SET/PT</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="get_pan_tilt">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>180</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>GET/PT</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="get_roll_data">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>60</y>
+     <width>61</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="get_roll">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>58</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(226, 222, 222);</string>
+   </property>
+   <property name="text">
+    <string>GET ROLL</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>BT_Close</zorder>
+  <zorder>BT_Top</zorder>
+  <zorder>line</zorder>
+  <zorder>Slider_Zoom</zorder>
+  <zorder>line_2</zorder>
+  <zorder>BT_0</zorder>
+  <zorder>BT_1</zorder>
+  <zorder>BT_2</zorder>
+  <zorder>BT_5</zorder>
+  <zorder>BT_4</zorder>
+  <zorder>BT_7</zorder>
+  <zorder>BT_8</zorder>
+  <zorder>BT_6</zorder>
+  <zorder>BT_3</zorder>
+  <zorder>toolButton</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_6</zorder>
+  <zorder>label_7</zorder>
+  <zorder>widget</zorder>
+  <zorder>BT_Set</zorder>
+  <zorder>BT_Clear</zorder>
+  <zorder>Box_Camera_USB</zorder>
+  <zorder>label_10</zorder>
+  <zorder>set_pan_data</zorder>
+  <zorder>set_tilt_data</zorder>
+  <zorder>get_pan_data</zorder>
+  <zorder>get_tilt_data</zorder>
+  <zorder>label_4</zorder>
+  <zorder>label_9</zorder>
+  <zorder>set_pan_tilt</zorder>
+  <zorder>get_pan_tilt</zorder>
+  <zorder>get_roll_data</zorder>
+  <zorder>get_roll</zorder>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>RockerHandle</class>
+   <extends>QWidget</extends>
+   <header>rockerhandle.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="image.qrc"/>
+ </resources>
+ <connections/>
+</ui>
