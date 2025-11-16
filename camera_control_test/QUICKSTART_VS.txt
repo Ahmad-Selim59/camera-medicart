@@ -1,0 +1,70 @@
+================================================================================
+QUICK START - VISUAL STUDIO
+================================================================================
+
+STEP 1: Open Visual Studio Developer Command Prompt
+----------------------------------------------------
+1. Press Windows key
+2. Search for: "Developer Command Prompt for VS"
+   OR
+   Search for: "x64 Native Tools Command Prompt for VS"
+3. Click to open it
+
+STEP 2: Navigate to Project Folder
+-----------------------------------
+In the command prompt, type:
+    cd path\to\camera_control_test
+
+For example:
+    cd C:\Users\YourName\Downloads\camera_control_test
+
+STEP 3: Build
+-------------
+Type:
+    build.bat
+
+Or just double-click build.bat (if you've set up the environment)
+
+STEP 4: Run
+-----------
+Type:
+    CameraControlTest.exe
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Problem: "cl is not recognized"
+Solution:
+- Make sure you're using Visual Studio Developer Command Prompt
+- Don't use regular Command Prompt
+- The Developer Command Prompt sets up the environment automatically
+
+Problem: "Cannot open include file: 'windows.h'"
+Solution:
+- Make sure Windows SDK is installed
+- Try using "x64 Native Tools Command Prompt" instead
+
+Problem: "LINK : fatal error LNK1104: cannot open file 'CameraCtrl.lib'"
+Solution:
+- Make sure CameraCtrl.lib is in the same folder as main.cpp
+- Check that you're in the correct directory
+
+Problem: Build succeeds but program won't run
+Solution:
+- Make sure CameraCtrl.dll is in the same folder as CameraControlTest.exe
+- Copy CameraCtrl.dll to the same folder if needed
+
+================================================================================
+FILES NEEDED
+================================================================================
+
+Make sure these files are in the camera_control_test folder:
+- main.cpp
+- CameraCtrl.h
+- CameraCtrl.lib
+- CameraCtrl.dll
+- build.bat
+
+================================================================================
+

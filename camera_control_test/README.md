@@ -13,43 +13,30 @@ This is a simple console-based test application to verify camera controls using 
 
 ## Building the Application
 
-### For Windows 7 or Minimal Setup (Recommended)
-
-**Easiest Method: Install TDM-GCC (Free, ~100MB)**
-
-1. Download TDM-GCC from: https://jmeubank.github.io/tdm-gcc/
-2. Install it (make sure "Add to PATH" is checked)
-3. Open Command Prompt in the `camera_control_test` directory
-4. Run: `compile_simple.bat` (or double-click it)
-5. Done! See `WINDOWS7_SETUP.txt` for detailed instructions
-
-**Alternative: Use build_mingw.bat**
-```
-build_mingw.bat
-```
-
-### Option 1: Using Visual Studio (Windows 8+)
+### Using Visual Studio (Recommended)
 
 1. Open **Developer Command Prompt for VS** (or Visual Studio x64 Native Tools Command Prompt)
+   - Search for "Developer Command Prompt for VS" in Start Menu
+   - Or "x64 Native Tools Command Prompt for VS"
 2. Navigate to the `camera_control_test` directory
 3. Run:
    ```
    build.bat
    ```
+4. The executable `CameraControlTest.exe` will be created
 
-### Option 2: Using CMake
+### Alternative: Using Visual Studio IDE
 
-1. Open CMake GUI or use command line
-2. Set source directory to `camera_control_test`
-3. Set build directory (e.g., `camera_control_test/build`)
-4. Configure and Generate
-5. Open the generated solution in Visual Studio and build
+1. Open Visual Studio
+2. File > Open > CMake...
+3. Select the `CMakeLists.txt` file in the `camera_control_test` directory
+4. Build > Build All
 
-### Option 3: Manual Compilation (MinGW/GCC)
+### Manual Compilation (Visual Studio Command Line)
 
-From Command Prompt (after installing MinGW or TDM-GCC):
+From Visual Studio Developer Command Prompt:
 ```
-g++ -std=c++11 -Wall -O2 main.cpp -o CameraControlTest.exe CameraCtrl.lib -lstrmiids -lws2_32 -lole32 -loleaut32 -ladvapi32
+cl /EHsc /std:c++11 /O2 main.cpp CameraCtrl.lib strmiids.lib Ws2_32.lib ole32.lib oleaut32.lib Advapi32.lib /Fe:CameraControlTest.exe /link /SUBSYSTEM:CONSOLE
 ```
 
 ## Running the Application
@@ -75,14 +62,13 @@ g++ -std=c++11 -Wall -O2 main.cpp -o CameraControlTest.exe CameraCtrl.lib -lstrm
 ## Requirements
 
 - Windows OS (Windows 7 or later)
-- C++ Compiler (choose one):
-  - **TDM-GCC** (recommended for Windows 7, free, ~100MB) - https://jmeubank.github.io/tdm-gcc/
-  - **MinGW-w64** (free, lightweight)
-  - **Visual Studio** (Windows 8+, larger download)
+- **Visual Studio** (2015 or later) with C++ support
+  - Visual Studio Community (free)
+  - Or Visual Studio Build Tools
 - Camera connected via USB
 - Camera must support UVC extension units
 
-**For Windows 7 users:** See `WINDOWS7_SETUP.txt` for detailed setup instructions.
+**Note:** You need to use Visual Studio Developer Command Prompt to run `build.bat`
 
 ## Troubleshooting
 
